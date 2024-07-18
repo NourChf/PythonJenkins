@@ -15,15 +15,10 @@ def check_and_install_jenkins_module():
     package_name = 'jenkins'
     spec = importlib.util.find_spec(package_name)
     if spec is None:
-        print(f"The '{package_name}' module is not installed.")
-        choice = input(f"Do you want to install '{package_name}' now? (y/n): ").lower()
-        if choice == 'y':
-            install_package(package_name)
-        else:
-            print(f"Please install '{package_name}' manually to proceed.")
-            sys.exit(1)
+        print(f"The '{package_name}' module is not installed. Installing now...")
+        install_package(package_name)
 
-    # Module import after installation check
+    # Import 'jenkins' module after installation check
     import jenkins
     from jenkins import JenkinsException
 
